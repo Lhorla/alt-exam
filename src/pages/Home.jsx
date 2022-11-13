@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Home() {
     return (
         <div className="home-container">
-            <h1>Welcome to my portfolio</h1>
+            <h1>Welcome to my github repos</h1>
             <p>Here you can see all my projects</p>
             <Link to="/profile">
                 <button>Learn More</button>

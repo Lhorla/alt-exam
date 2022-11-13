@@ -15,8 +15,19 @@
   background-color: antiquewhite;
   padding: 0 20px;
   width: 100%;
+  height: 70px;
   position: relative;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: fixed;
+  top: 0;
+}
+
+.nav-active {
+  text-decoration: none;
+}
+
+.nav-inactive {
+  text-decoration: none;
 }
 
 .nav-logo {
@@ -35,22 +46,42 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+  position: relative;
 }
 
 .nav-links ul li {
-  list-style: none;
+  list-style-type: none;
+  margin-right: 20px;
   margin: 0 3rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nav-icon {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s ease-in-out;
+}
+
+.nav-icon:hover {
+  background-color: #de4b4b;
+  color: #fff;
 }
 
 .home-container {
-  width: 100%;
-  height: 100vh;
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  background-color: antiquewhite;
-  gap: 1em;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
 }
 
 .home-container h1 {
@@ -78,24 +109,20 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.project-container {
-  text-align: center;
-  background-color: antiquewhite;
-  height: 100vh;
-}
-
 .profile-container {
+  margin: auto;
+  width: 100vw;
   text-align: center;
-  background-color: antiquewhite;
-  min-height: 100vh;
+  padding: 2rem;
+
 }
 
 .profile-card {
   border-radius: 10px;
   background-color: aliceblue;
-  width: 50%;
-  margin: 0 auto;
-  padding: 1em;
+  width: 100%;
+  margin: 5rem auto;
+  padding: 2rem;
 }
 
 .profile {
@@ -121,25 +148,131 @@
 .profile-details a {
   text-decoration: none;
   color: #000;
+  font-size: 1.5rem;
 }
+
+.profile-details h3, p{
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000;
+}
+
 
 .profile-details button {
   color: #000;
   margin: 1rem 0;
-  font-size: 16px;
+  font-size: 1.5rem;
   border: none;;
-  padding: 8px 16px;
-  background-color: #de4b4b;
+  padding: 10px 20px;
+  background-color: #edebeb;
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.project-container {
+.social-icons {
+  font-size: 2rem;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: #000;
+  margin: 0 1rem;
+}
+
+.projects-container {
+  margin: 6rem 12rem;
+  width: 100%;
   text-align: center;
-  background-color: antiquewhite;
-  min-height: 100vh;
+}
+
+.projects-heading {
+  margin-top: 1rem;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #de4b4b;
+}
+
+.repo {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 1em;
+  margin: 1.5rem;
+  padding: 3rem;
+  border-radius: 10px;
+  background-color: aliceblue;
+}
+
+.project-name {
+  padding: 1rem;
+  text-align: justify;
+}
+
+.project-name h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #de4b4b;
+}
+
+
+.project-visibility {
+  padding: 1rem;
+  text-align: justify;
+  font-size: 1.5rem;
+  margin: 5px auto;
+}
+
+.project-visibility .visible {
+  margin-bottom: 10px;
+}
+
+.project-btn {
+  color: #000;
+  margin: 1rem;
+  font-size: 16px;
+  border: none;
+  padding: 8px 16px;
+  background-color: #de4b4b;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prodetails-container {
+  margin: 3rem auto;
+  width: 80%;
+  background-color: #edebeb;
+  border-radius: 10px;
+}
+
+.star {
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.pagination button {
+  color: #000;
+  margin: 1rem;
+  font-size: 16px;
+  border: none;
+  padding: 8px 16px;
+  background-color: #edebeb;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .loader {
@@ -157,3 +290,99 @@
   color: #FF3B3F;
 }
 
+.errorboundary-container {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-logo {
+    font-size: 1rem;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    height: auto;
+    background-color: white;
+    border-top: 1px solid black;
+  }
+
+  .nav-links li:nth-child(1) {
+    border-top: 1px solid rgba(255, 255, 255, 0.555);
+    margin-top: 50px;
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.555);
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
+  }
+
+  .nav-icon {
+    display: block;
+  }
+  
+
+  .profile-card {
+    margin-top: 5rem;
+    width: 100%;
+  }
+
+  .profile img {
+    width: 100%;
+  }
+
+  .profile-details h1 {
+    font-size: 2rem;
+    padding: 0 3rem;
+  }
+
+  .profile-details p {
+    font-size: 1.5rem;
+  }
+
+  .home-container h1 {
+    font-size: 3rem;
+  }
+
+  .repo {
+    padding: 20px 30px;
+  }
+
+  .project-name h1 {
+    font-size: 1.5rem;
+  }
+
+  .project-visibility {
+    font-size: 1rem;
+    margin-left: 2rem;
+  }
+
+  .star {
+    font-size: 1rem;
+  }
+
+  .projects-heading {
+    font-size: 2rem;
+    margin-top: 4rem;
+  }
+
+  .project-btn {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .pagination button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  
+}

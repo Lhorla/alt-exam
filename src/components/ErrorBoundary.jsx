@@ -1,18 +1,34 @@
-import { Helmet } from "react-helmet-async";
+import React, { Component } from "react";
 
-function ErrorFallback({ error, resetErrorBoundary }) {
-  return (
-    <div
-      role="alert"
-    >
-      <Helmet >
-        <title>Something went wrong</title>
-      </Helmet>
-      <h1>Something went wrong:</h1>
-      <p style={{ color: "red" }}>{error.message}</p>
-      <button style={{ width: "fit-content" }} className="button" onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  );
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    console.log(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return (
+        <div className="errorboundary-container">
+          <h1>Something went wrong.</h1>
+          <a href="/">Go back to home</a>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
 }
 
-export default ErrorFallback;
+export default ErrorBoundary;

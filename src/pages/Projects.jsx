@@ -1,45 +1,60 @@
-import React, { useState, useEffect } from "react";
-import Loader from "../components/Loader";
-//import Pagination from "../components/Pagination"
+import React from "react";
+import { useState, useEffect } from "react";
+import Pagination from "../components/Pagination";
+import Loader from "../components/Loader"
+import Repo from "../pages/Repo";
 
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [projectsPerPage] = useState(10);
+
+  const totalProjects = projects.length;
+
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = projects.slice(
+    indexOfFirstProject,
+    indexOfLastProject
+  );
 
   useEffect(() => {
     getProjects();
   }, []);
 
   const getProjects = async () => {
-    const response = await fetch("https://api.github.com/users/lhorla/repos");
-    const data = await response.json();
-    setProjects(data);
-    setLoading(false);
-    console.log(data);
+    try {
+      const response = await fetch("https://api.github.com/users/lhorla/repos")
+      const data = await response.json();
+      setProjects(data);
+      setLoading(false);
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
   };
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <div className="projects-container">
-            {projects.map((project) => {
-              const { id, name, description, html_url } = project;
-              return (
-                <div className="project-card" key={id}>
-                  <h1>{name}</h1>
-                  <p>{description}</p>
-                  <a href={html_url} target="_blank" rel="noreferrer">
-                    View Project
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-        </>
-      )}
+    <div className="projects-container">
+
+      <h1 className="projects-heading">My Projects</h1>
+
+      <div className="projects">
+        <Repo projects={currentProjects} loading={loading} />
+      </div>
+      
+      <Pagination
+        projectsPerPage={projectsPerPage}
+        totalProjects={totalProjects}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        loading={loading}
+        className="pagination"
+      />
     </div>
   );
 }
