@@ -244,10 +244,19 @@
 }
 
 .prodetails-container {
-  margin: 3rem auto;
-  width: 80%;
+  margin: 10rem 12rem;
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
   background-color: #edebeb;
   border-radius: 10px;
+}
+
+.prodetails-container h1 {
+  margin-bottom: 1rem;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #de4b4b;
 }
 
 .star {
@@ -308,9 +317,10 @@
 
   .nav-links ul {
     flex-direction: column;
-    height: auto;
+    height: 100%;
     background-color: white;
-    border-top: 1px solid black;
+    border-top: 2px solid black;
+    margin-top: 2rem;
   }
 
   .nav-links li:nth-child(1) {
@@ -323,14 +333,13 @@
     border-top: 1px solid rgba(255, 255, 255, 0.555);
     text-align: center;
     padding: 20px 0;
-    margin: 0;
+    margin: 2rem 0;
   }
 
   .nav-icon {
     display: block;
   }
   
-
   .profile-card {
     margin-top: 5rem;
     width: 100%;
@@ -354,7 +363,8 @@
   }
 
   .repo {
-    padding: 20px 30px;
+    padding: 5px;
+    fo
   }
 
   .project-name h1 {
